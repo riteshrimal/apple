@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheets" href="\stylesheets\profilestyle.css">
+    <title>profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; 
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF0F5;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.container {
+    color: #8B008B;
+    position: relative;
+    width: 35rem;
+    height: 11.5rem;
+    background-color: #f9d0e5;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: height 0.4s ease-in;
+    border-radius: 10%;
+    align-items: center;
+    margin-top: -8%;
+}
+
+.container.active {
+    height: 40rem;
+}
+
+.card {
+    color: #8B008B;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.card-img img {
+    width: 80px;
+}
+
+.card h2 {
+    font-size: 2.2rem;
+    margin-left: 1.5rem;
+    color: #8B008B;
+    letter-spacing: 2px;
+}
+
+.card h2 span {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #8B008B;
+    letter-spacing: 0px;
+}
+
+.container ul {
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin-top: 1.5rem;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.container ul a {
+    font-size: 1.8rem;
+    color: #8B008B;
+    transition: 0.2s;
+}
+
+.fa {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.container ul a:hover {
+    color: #8B008B;
+}
+
+.toggle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    background-color:#8B008B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle > .fa {
+    margin: auto;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s;
+    font-size: 1.8rem;
+}
+
+.container.active .toggle > .fa {
+    transform: rotate(-540deg);
+}
+
+.btn-container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: 5px;
+    display: flex;
+    background-color: #e886d6;
+    border-radius: 3px;
+    gap: 1rem;
+}
+
+.btn-container button {
+    background-color: #FF69B4;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-container button:hover {
+    background-color: #FF1493;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.image-item img {
+    width: 100%;
+    border-radius: 5px;
+    max-width: 175px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.image-item img:hover {
+    transform: scale(0.97);
+}
+
+.modal {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s linear;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 5px;
+}
+
+.close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding: 0px 0px 6px 0px;
+    top: 35px;
+    right: 35px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+.close:hover {
+    transform: scale(0.9);
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    white-space: pre-line;
+    text-align: center;
+    color: #ccc;
+    padding: 25px 0px 42px 0px;
+    height: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s;
+}
+
+.div-container :active button {
+            background-color: #d7d7d7;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.6rem;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+        }
+        
+        .uploadform{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .uploadform button:hover {
+            background-color: #FF1493;
+        }
+
+
+        .textcaption {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.6rem;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+        }
+
+        .fileupload{
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+    </style>
+</head>
+<body bgcolor="#FFF0F5">
+    <body bgcolor="#FFF0F5">
+        <!-- font awesome link  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+        <div class="container">
+            <div class="card">
+                <div class="card-img">
+                    <img src="<%=`/images/uploads/${user.dp}`%>" alt="">
+                </div>
+                <h2><%= user.fullname %> <br/><span>@<%= user.username %></span></h2>
+            </div>
+            <ul>
+                <form action="/dp-upload" method="post" enctype="multipart/form-data" class="uploadform">
+                    <input type="file" name="dp" class="fileupload">
+                    <button type="submit" class="btn-container">Upload DP</button>
+                </form>
+                <br>
+                <form action="/upload" method="post" enctype="multipart/form-data" class="uploadform">
+                    <input type="text" name="filecaption" class="textcaption" placeholder="caption here">
+                    <br>
+                    <input type="file" class="fileupload" name="file">
+                    <button type="submit">Upload Post</button>
+                </form>
+            </ul>
+            <div class="toggle">
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+        </div>
+    
+        <div class="image-container">
+            <div class="image-gallery">
+                <% user.posts.forEach(function(post){ %>
+                    <div class="image-item">
+                        <img src="<%=`/images/uploads/${post.image}`%>" alt="<%= post.imageText %>" data-full="<%=`/images/uploads/${post.image}`%>">
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    
+        <!-- Modal Structure -->
+        <div id="imageModal" class="modal" role="dialog" aria-label="Image View Modal">
+            <button class="close" aria-label="Close" tabindex="0">&times;</button>
+            <img class="modal-content" id="fullImage">
+            <div id="caption" aria-live="polite"></div>
+        </div>
+    
+        <script>
+            // JavaScript code omitted for brevity
+        </script>
+    
+        <div class="btn-container">
+            <button onclick="window.location.href='/logout'">Log Out</button>
+        </div>
+    </body>
+    </html>
+
+<script>
+     const container = document.querySelector('.container');
+    const toggle = document.querySelector('.toggle');
+
+    toggle.addEventListener('click', () => {
+        container.classList.toggle('active');
+    });
+
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("fullImage");
+    const captionText = document.getElementById("caption");
+    const imageGallery = document.querySelector(".image-gallery");
+
+    imageGallery.addEventListener("click", function (event) {
+      const target = event.target;
+      if (target.tagName === "IMG" && target.closest(".image-item")) {
+        showModal(target);
+      }
+    });
+
+    function showModal(img) {
+      modal.style.visibility = "visible";
+      modal.scrollTop = 0;
+      requestAnimationFrame(() => {
+        modal.style.opacity = "1";
+      });
+
+      modalImg.src = img.dataset.full;
+      captionText.style.opacity = "0";
+      captionText.style.visibility = "visible";
+      setTimeout(() => {
+        captionText.innerHTML = img.alt;
+        captionText.style.opacity = "1";
+      }, 1000);
+
+      document.addEventListener("keydown", handleEscape, false);
+    }
+
+    function handleEscape(event) {
+      if (event.key === "Escape" || event.key === "Esc") {
+        closeModal();
+      }
+    }
+
+    const span = document.querySelector(".close");
+
+    span.addEventListener("click", closeModal);
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modal.style.opacity = "0";
+      modal.addEventListener(
+        "transitionend",
+        () => {
+          modal.style.visibility = "hidden";
+          captionText.style.visibility = "hidden";
+          captionText.style.opacity = "0";
+          captionText.innerHTML = "";
+        },
+        {
+          once: true
+        }
+      );
+
+      document.removeEventListener("keydown", handleEscape, false);
+    }
+</script>
+
+<div class="btn-container">
+    <button onclick="window.location.href='/logout'">Log Out</button>
+</div>
+
+</body>
+</html>
