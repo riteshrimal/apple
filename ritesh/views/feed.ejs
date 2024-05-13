@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +9,18 @@
     {
       margin: 0;
       padding: 0;
-        background-color: #262626;
+        background-color:#FFF0F5;
       box-sizing: border-box;
       font-family: "Gill Sans", "Gill Sans MT", "Myriad          Pro", "DejaVu Sans Condensed", Helvetica, Arial,        "sans-serif";
     }
-    
+
     
     nav{
         display: flex;
         justify-content: space-around;
         align-items: center;
         min-height: 10vh;
-        background-color: #000000;
+        background-color: #FFF0F5;
         position: fixed;
         width: 100%;
         font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
@@ -30,31 +29,31 @@
     }
     
     .logo{
-        color: #49ffd0;
+        color:#8B008B;
         letter-spacing: 25px;
         font-size: 20px;
-        background-color: #000000;
+        background-color: #FFF0F5;
     }
     
-    .navLink{
-        display: flex;
-        justify-content: space-around;
-        width: 40%;
-        background-color: #000000;
-        }
-        
-    .navLink li{
-        list-style: none;
-        background-color: #000000;
-    }
-    
-    .navLink a{
-        color: aquamarine;
-        text-decoration: none;
-        letter-spacing: 2px;
-        font-size: 16px;
-        background-color: #000000;
-    }
+    .navLink {
+    display: flex;
+    justify-content: flex-end; /* Align items to the end of the flex container */
+    width: 60%; /* Adjust width as needed */
+    background-color: #FFF0F5;
+    align-self: flex-end;
+}
+
+.navLink li {
+    list-style: none;
+    margin-left: 20px; /* Add spacing between items */
+}
+
+.navLink a {
+    color: #8B008B;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 16px;
+    background-color: #FFF0F5;}
     
     .navLink a:hover{
        color: #588275;
@@ -68,7 +67,7 @@
     .lines div{
         width: 25px;
         height: 3px;
-        background-color: aquamarine;
+        background-color: rgb(255, 255, 255);
         margin: 5px;
         
     }
@@ -77,8 +76,9 @@
       display: flex;
         justify-content: space-around;
         align-items: center;
-      color: #fff;
+      color:#8B008B;
       padding-top: 17vh;
+
     }
     
     .container
@@ -150,7 +150,7 @@
             right: 0px;
             height: 90vh;
             top: 10vh;
-            background-color: #000; 
+            background-color: #00000000; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -218,17 +218,17 @@
       }
     }</style>
 </head>
-<body>
+<body bgcolor="#FFF0F5">
   <body>
     <nav>
      <div class="logo">
-       <h5>Princess</h5>
+       <h5 color="#FFF0F5">Princess </h5>
      
      </div>
      <ul class="navLink">
-       <li><a href="#">About</a></li>
-       <li><a href="#">Contact</a></li>
-       <li><a href="#">Projects</a></li>
+       <li><a href="home">home</a></li>
+       <li><a href="profile">profile</a></li>
+       
      </ul>
    <div class="lines">
      <div class="l1"></div>
@@ -238,7 +238,7 @@
    </nav>
 
 <header>
- <h1>Pinterest Style Image Galley with Responsive Navigation Bar</h1>
+ <h1>Princess Gallery </h1>
 </header> 
 
 <div class="container">
