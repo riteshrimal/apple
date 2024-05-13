@@ -76,15 +76,18 @@ router.post('/login', passport.authenticate("local", {
 
 });
 
-// Logout Endpoint
-router.get('/logout', function(req, res) {
-  req.logout(function(err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
+
+
+router.get('/feed', isLoggedIn, async function(req, res, next) {
+  try {
+    const allPosts = await postModel.find().populate('user'); // Populate the 'user' field if needed
+    res.render('feed', { posts: allPosts });
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    next(error);
+  }
 });
+
 
 
 
@@ -167,7 +170,14 @@ router.get('/delete-users', async (req, res, next) => {
 
 
 
-
+router.get("/logout",function(req,res,next){
+  req.logout(function(err){
+    if(err){
+      return next(err);
+    }
+    res.redirect('/');
+  });
+  });
 
 
 
